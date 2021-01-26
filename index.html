@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>C# Lexer</title>
+</head>
+<body>
+	<h1 style="text-align: center;">C# Lexer</h1>
+
+	<section style="display: flex; justify-content: center;">
+
+	<div style="display: inline-block; position: relative; text-align: center;">
+		<h2>Source Code</h2>
+
+		<textarea 
+			style="
+				width: 100%;
+				min-height: 100px;
+				max-height: 465px;
+				background: url(http://i.imgur.com/2cOaJ.png) top -12px left / auto no-repeat, 
+				linear-gradient(#F1F1F1 50%, #F9F9F9 50%) top left / 100% 32px;
+				border: 1px solid #CCC;
+				box-sizing: border-box;
+				padding: 0 0 0 30px;
+				resize: vertical;
+				line-height: 16px;
+				font-size: 13px;"
+			onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" 
+			name="sourceCode" id="sourceCode" cols="50" rows="30" placeholder="Source Code">		
+		</textarea>
+
+		<button type="submit" onclick="Tokenize()" style= "position: absolute; bottom: 10px; right: 10px;">Analyze</button>
+	</div>
+	
+	<div style="display: inline-block; text-align: center;">
+		<h2>Output</h2>
+
+		<textarea name="outputArea" id="outputArea" cols="50" rows="30" readonly></textarea>
+	</div>
+
+	<div style="display: inline-block; position: relative; text-align: center;">
+		<h2>Symbol Table</h2>
+
+		<textarea name="" id="searchArea" cols="50" rows="10" readonly></textarea>
+
+		<form id="searchForm" style="position: absolute; bottom: 260px; right: 10px;">
+			<input type="search" id="searchInput" placeholder="Search Symbol">
+			<button type="submit" onclick="searchTable()">Search</button>
+		</form>
+	</div>
+
+	<script src="lexer.js"></script>
+	</section>
+</body>
+</html>
